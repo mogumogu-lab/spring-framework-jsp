@@ -7,8 +7,8 @@ group = 'com.example'
 version = '1.0.0'
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 repositories {
@@ -47,6 +47,7 @@ war {
 }
 
 // Explode WAR for hot reloading development
+// Usage: docker-compose up -d && ./gradlew explodeWar --continuous
 tasks.register('explodeWar', Copy) {
     dependsOn war
     from zipTree(war.archiveFile)
@@ -69,31 +70,6 @@ tasks.register('deployWar', Copy) {
         println ""
         println "========================================="
         println "WAR file deployed to: target/app.war"
-        println "========================================="
-    }
-}
-
-// Development mode: explode WAR and start Docker
-tasks.register('dev') {
-    dependsOn 'explodeWar'
-    group = 'application'
-    description = 'Build exploded WAR for development with hot reloading'
-
-    doLast {
-        println ""
-        println "========================================="
-        println "Development build completed!"
-        println ""
-        println "Next steps:"
-        println "  1. docker-compose up -d"
-        println "  2. ./gradlew explodeWar --continuous"
-        println ""
-        println "Hot reloading enabled:"
-        println "  - JSP files: instant reload"
-        println "  - Java classes: auto-reload on recompile"
-        println ""
-        println "Application URL:"
-        println "  http://localhost:8080"
         println "========================================="
     }
 }
