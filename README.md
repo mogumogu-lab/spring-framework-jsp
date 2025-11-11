@@ -7,8 +7,7 @@ A Spring Framework 6.x web application using JSP, MyBatis, and PostgreSQL.
 - **Framework**: Spring Framework 6.1.14 (Spring MVC, Spring JDBC)
 - **Server**: Apache Tomcat 11 (JDK 21)
 - **Database**: PostgreSQL
-- **ORM**: MyBatis 3.5.16
-- **Build**: Gradle 8.x
+- **Build**: Gradle 9.2.0
 - **View**: JSP with JSTL
 
 ## Getting Started
@@ -17,16 +16,18 @@ A Spring Framework 6.x web application using JSP, MyBatis, and PostgreSQL.
 
 - JDK 21
 - Docker & Docker Compose
-- Gradle (or use included gradlew)
+- Gradle 9.2.0 (or use included gradlew)
 
 ### Development Mode (with Hot Reloading)
 
 1. Start the exploded WAR builder in continuous mode (Terminal 1):
+
 ```bash
 ./gradlew explodeWar --continuous
 ```
 
 2. Start Docker containers (Terminal 2):
+
 ```bash
 docker-compose up -d
 ```
@@ -39,6 +40,7 @@ http://localhost:8080
 ### Production Build
 
 Build and deploy the WAR file:
+
 ```bash
 ./gradlew buildAndDeploy
 docker-compose up -d
